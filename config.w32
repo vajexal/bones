@@ -1,0 +1,7 @@
+ARG_ENABLE('bones', 'bones support', 'no');
+
+if (PHP_BONES != 'no') {
+	AC_DEFINE('HAVE_BONES', 1, 'bones support enabled');
+
+	EXTENSION('bones', 'bones.c', null, '/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1');
+}
