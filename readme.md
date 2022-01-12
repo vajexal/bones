@@ -1,5 +1,7 @@
 This extension forbids undeclared properties access (like php 8.2), but for php 7.4+. For example
 
+[![Build Status](https://github.com/vajexal/php-ext-bones/workflows/Build/badge.svg)](https://github.com/vajexal/php-ext-bones/actions)
+
 ```php
 class Foo {}
 
