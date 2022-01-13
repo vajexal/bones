@@ -23,6 +23,8 @@ static const zval *get_opline_zval(const zend_op *opline, int op_type, const zno
     }
 
     ZVAL_DEREF(zv);
+    ZVAL_DEINDIRECT(zv);
+
     return !Z_ISUNDEF_P(zv) ? zv : NULL;
 }
 
