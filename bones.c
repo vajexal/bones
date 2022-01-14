@@ -44,7 +44,12 @@ static int bones_assign_obj_handler(zend_execute_data *execute_data) {
     obj = get_opline_obj_zval(opline, opline->op1_type, &opline->op1, execute_data);
     property = get_opline_zval(opline, opline->op2_type, &opline->op2, execute_data);
 
-    if (!obj || !property || Z_TYPE_P(obj) != IS_OBJECT || Z_OBJCE_P(obj)->type != ZEND_USER_CLASS || Z_TYPE_P(property) != IS_STRING) {
+    if (
+        !obj || !property ||
+        Z_TYPE_P(obj) != IS_OBJECT ||
+        zend_string_equals_literal(Z_OBJCE_P(obj)->name, "stdClass") ||
+        Z_TYPE_P(property) != IS_STRING
+    ) {
         return ZEND_USER_OPCODE_DISPATCH;
     }
 
